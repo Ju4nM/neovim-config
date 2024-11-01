@@ -11,7 +11,7 @@ return {
 
   {
     "phaazon/hop.nvim",
-    config = function () 
+    config = function ()
       require("hop").setup()
     end,
     cmd = {"HopWord", "HopChar2"},  -- Carga solo cuando se llama al comando HopWord
@@ -21,23 +21,23 @@ return {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
-    config = function()
+    config = function ()
       require("nvim-surround").setup()
     end
   },
 
   {
-    'windwp/nvim-autopairs',
+    "windwp/nvim-autopairs",
     event = "InsertEnter",
     config = true
   },
 
   {
     "lukas-reineke/indent-blankline.nvim",
-    init = function()
+    init = function ()
       require("plugins-configs.blankLine")
     end,
-    event = "BufRead",  -- Carga al leer un buffer
+    event = { "BufRead", "BufWinEnter" },  -- Carga al leer un buffer
   },
 
   {
@@ -78,6 +78,47 @@ return {
     init = function ()
       vim.g.startuptime_tries = 10
     end,
+  },
+
+  {
+    "nvim-telescope/telescope.nvim", tag = "0.1.8",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    cmd = { "Telescope" },
+  },
+
+  {
+    "hrsh7th/nvim-cmp",
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",       -- Fuente LSP para nvim-cmp
+      "hrsh7th/cmp-buffer",         -- Fuente de palabras en el buffer
+      "hrsh7th/cmp-path",           -- Fuente de rutas de archivos
+      "hrsh7th/cmp-cmdline",        -- Fuente para comandos de Neovim
+      "saadparwaiz1/cmp_luasnip",   -- Fuente de snippets
+      "L3MON4D3/LuaSnip",           -- Plugin para snippets
+      "onsails/lspkind.nvim"        -- Iconos en el menú de autocompletado
+    },
+    config = function ()
+      require("plugins-configs.nvimCmp")
+    end,
+    event = "InsertEnter"
+  },
+
+  {
+    "neovim/nvim-lspconfig",              -- Configuración de LSP para Neovim
+    dependencies = {
+      "williamboman/mason-lspconfig.nvim", -- Integración entre Mason y LSP
+    },
+    config = function ()
+      require("plugins-configs.lspconfig")
+    end,
+    event = { "BufRead", "BufWinEnter" }
+  },
+
+  {
+    "williamboman/mason.nvim",
+    config = function ()
+      require("mason").setup()
+    end,
+    cmd = { "Mason", "MasonInstall", "MasonUninstall" }
   }
 }
-
