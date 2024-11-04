@@ -1,5 +1,8 @@
 require("nvim-tree").setup({
   sort_by = "case_sensitive",
+  filters = {
+    dotfiles = false
+  },
   view = {
     side="right",
     adaptive_size = true,

@@ -69,7 +69,7 @@ local mappings = {
   ---------------------------------------------------------------------
 
   -- Telescope keymaps
-  { "n", "<leader>ff", ":Telescope find_files<CR>", { silent = true } }, -- Find file
+  { "n", "<C-p>", ":Telescope find_files<CR>", { silent = true } }, -- Find file
   { "n", "<leader>fg", ":Telescope live_grep<CR>", { silent = true } }, -- Find string
   { "n", "<leader>fb", ":Telescope buffers<CR>", { silent = true } },
   { "n", "<leader>fh", ":Telescope help_tags<CR>", { silent = true } },

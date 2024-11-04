@@ -8,8 +8,8 @@ require("bufferline").setup {
       {
         filetype = "NvimTree",
         text = "File Explorer",
-        text_align = "center",
-        separator = true
+        text_align = "right",
+        separator = true,
       }
     },
     separator_style =  { "", "" }, --"slant", 
@@ -21,6 +21,7 @@ require("bufferline").setup {
     buffer_selected = {
       italic = false,
       bold = true,
+      fg = "#dbb6ee",
     },
     diagnostic_selected = { italic = false },
     hint_selected = { italic = false },
